@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IO Studio</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #111;
+            font-family: Arial, sans-serif;
+        }
+
+        #loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+        }
+
+        .loading {
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            animation-duration: 4s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            animation-name: loadingAnimation;
+        }
+
+        @keyframes loadingAnimation {
+            0% {
+                border-radius: 50% 50% 50% 50%;
+                transform: rotate(0deg);
+            }
+            12.5% {
+                border-radius: 0% 50% 50% 50%;
+            }
+            25% {
+                border-radius: 0% 0% 50% 50%;
+                transform: rotate(90deg);
+            }
+            37.5% {
+                border-radius: 0% 0% 0% 50%;
+            }
+            50% {
+                border-radius: 0% 0% 0% 0%;
+                transform: rotate(180deg);
+            }
+            62.5% {
+                border-radius: 50% 0% 0% 0%;
+            }
+            75% {
+                border-radius: 50% 50% 0% 0%;
+                transform: rotate(270deg);
+            }
+            87.5% {
+                border-radius: 50% 50% 50% 0%;
+            }
+            100% {
+                border-radius: 50% 50% 50% 50%;
+                transform: rotate(360deg);
+            }
+        }
+
+        #main-content {
+            display: none;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+        }
+
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 76px;
+            height: 34px;
+        }
+
+        .background-section {
+            width: 100%;
+            height: 25%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Colors for background sections */
+        .section-1 {
+            background-color: #303030;
+        }
+        .section-2 {
+            background-color: #2B2B2B;
+        }
+        .section-3 {
+            background-color: #1A1A1A;
+        }
+        .section-4 {
+            background-color: #111;
+        }
+
+        .icon-link img {
+            width: 50px;
+            height: 50px;
+            filter: invert(1);
+            transition: transform 0.2s ease;
+        }
+
+        .icon-link img:hover {
+            transform: scale(1.2);
+        }
+
+        .background-section:first-child {
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+        }
+
+        .background-section:last-child {
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+
+        iframe {
+            width: 90%;
+            height: 500px;
+            display: block;
+            margin: 20px auto;
+            border: none;
+            max-width: 880px;
+            border-radius: 8px;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11), 0 4px 4px rgba(0, 0, 0, 0.11), 0 6px 8px rgba(0, 0, 0, 0.11), 0 8px 16px rgba(0, 0, 0, 0.11);
+        }
+    </style>
+</head>
+<body>
+    <div id="loader">
+        <span class="loading"></span>
+    </div>
+
+    <div id="main-content">
+        <a href="https://caasiohso.sirv.com/IO%20LOGOArtboard%201%20w.png" class="logo">
+            <img src="https://caasiohso.sirv.com/IO%20LOGOArtboard%201%20w.png" alt="IO Studio Logo">
+        </a>
+
+        <div class="background-section section-1">
+            <a class="icon-link" href="https://caasiohso.sirv.com/picture_16607066.png" target="_blank">
+                <img src="https://caasiohso.sirv.com/picture_16607066.png" alt="Image Icon">
+            </a>
+        </div>
+
+        <div class="background-section section-2">
+            <a class="icon-link" href="https://isaacosho.github.io/30X15M/" target="_blank">
+                <img src="https://caasiohso.sirv.com/touch-controller_17007430.png" alt="Touch Icon">
+            </a>
+        </div>
+
+        <div class="background-section section-3">
+            <a class="icon-link" href="tour.html" target="_blank">
+                <img src="https://caasiohso.sirv.com/virtual-tour.png" alt="360 Tour Icon">
+            </a>
+        </div>
+
+        <div class="background-section section-4"></div>
+    </div>
+
+    <script>
+        // Simulate loading delay for demonstration purposes
+        window.addEventListener("load", function() {
+            setTimeout(function() {
+                document.getElementById("loader").style.display = "none";
+                document.getElementById("main-content").style.display = "block";
+            }, 3000); // Adjust this duration if needed
+        });
+    </script>
+</body>
+</html>
