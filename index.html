@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>IO Studio</title>
     <style>
         * {
@@ -88,8 +88,8 @@
             position: absolute;
             top: 20px;
             left: 20px;
-            width: 5px;
-            height: 5px;
+            max-width: 25%;
+            height: auto;
         }
 
         .section {
@@ -135,6 +135,18 @@
             border-bottom-right-radius: 30px;
         }
 
+        /* Ensuring responsiveness on iPhone 13 Pro Max */
+        @media (max-width: 430px) {
+            .section img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .logo {
+                max-width: 30%;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -142,11 +154,7 @@
         <span class="loading"></span>
     </div>
 
-    <div id="main-content">
-        <a href="https://caasiohso.sirv.com/IO%20LOGOArtboard%201%20w.png" class="logo">
-            <img src="https://caasiohso.sirv.com/IO%20LOGOArtboard%201%20w.png" alt="IO Studio Logo">
-        </a>
-
+   
         <div class="section section-1">
             <a href="https://caasiohso.sirv.com/picture_16607066.png" target="_blank">
                 <img src="https://caasiohso.sirv.com/picture_16607066.png" alt="Image Icon">
