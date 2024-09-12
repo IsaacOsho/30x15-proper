@@ -1,189 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>IO Studio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <title>Page with Loading Animation</title>
+  <meta charset="utf-8">
+  <style>
+    /* From Uiverse.io by hoi-du */
+    body {
+      margin: 0;
+      background-color: black;
+    }
 
-        body, html {
-            height: 100%;
-            font-family: Arial, sans-serif;
-            background-color: #111;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
+    .loading {
+      width: 50px;
+      height: 50px;
+      display: inline-block;
+      background-color: white;
+      margin: 10px;
+      border-radius: 0%;
+      animation-duration: 4s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      animation-name: loadingAnimation;
+    }
 
-        #loader {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: black;
-        }
+    @keyframes loadingAnimation {
+      0% {
+        border-radius: 50% 50% 50% 50%;
+        transform: rotate(0deg);
+      }
+      12.5% {
+        border-radius: 0% 50% 50% 50%;
+      }
+      25% {
+        border-radius: 0% 0% 50% 50%;
+        transform: rotate(90deg);
+      }
+      37.5% {
+        border-radius: 0% 0% 0% 50%;
+      }
+      50% {
+        border-radius: 0% 0% 0% 0%;
+        transform: rotate(180deg);
+      }
+      62.5% {
+        border-radius: 50% 0% 0% 0%;
+      }
+      75% {
+        border-radius: 50% 50% 0% 0%;
+        transform: rotate(270deg);
+      }
+      87.5% {
+        border-radius: 50% 50% 50% 0%;
+      }
+      100% {
+        border-radius: 50% 50% 50% 50%;
+        transform: rotate(360deg);
+      }
+    }
 
-        .loading {
-            width: 50px;
-            height: 50px;
-            background-color: white;
-            animation-duration: 4s;
-            animation-timing-function: ease-in-out;
-            animation-iteration-count: infinite;
-            animation-name: loadingAnimation;
-        }
-
-        @keyframes loadingAnimation {
-            0% {
-                border-radius: 50% 50% 50% 50%;
-                transform: rotate(0deg);
-            }
-            12.5% {
-                border-radius: 0% 50% 50% 50%;
-            }
-            25% {
-                border-radius: 0% 0% 50% 50%;
-                transform: rotate(90deg);
-            }
-            37.5% {
-                border-radius: 0% 0% 0% 50%;
-            }
-            50% {
-                border-radius: 0% 0% 0% 0%;
-                transform: rotate(180deg);
-            }
-            62.5% {
-                border-radius: 50% 0% 0% 0%;
-            }
-            75% {
-                border-radius: 50% 50% 0% 0%;
-                transform: rotate(270deg);
-            }
-            87.5% {
-                border-radius: 50% 50% 50% 0%;
-            }
-            100% {
-                border-radius: 50% 50% 50% 50%;
-                transform: rotate(360deg);
-            }
-        }
-
-        #main-content {
-            display: none;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            background-color: #111;
-        }
-
-        .logo {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            max-width: 25%;
-            height: auto;
-        }
-
-        .section {
-            flex: 1;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Colors for sections */
-        .section-1 {
-            background-color: #303030;
-        }
-        .section-2 {
-            background-color: #2B2B2B;
-        }
-        .section-3 {
-            background-color: #1A1A1A;
-        }
-        .section-4 {
-            background-color: #111;
-        }
-
-        .section img {
-            width: 50px;
-            height: 50px;
-            filter: invert(1);
-            transition: transform 0.2s ease;
-        }
-
-        .section img:hover {
-            transform: scale(1.2);
-        }
-
-        .section:first-child {
-            border-top-left-radius: 30px;
-            border-top-right-radius: 30px;
-        }
-
-        .section:last-child {
-            border-bottom-left-radius: 30px;
-            border-bottom-right-radius: 30px;
-        }
-
-        /* Ensuring responsiveness on iPhone 13 Pro Max */
-        @media (max-width: 430px) {
-            .section img {
-                width: 40px;
-                height: 40px;
-            }
-
-            .logo {
-                max-width: 30%;
-            }
-        }
-
-    </style>
+    /* Hides the main content until loading is done */
+    #content {
+      display: none;
+    }
+  </style>
+  <script>
+    // Show loading animation, then content after 3 seconds
+    window.onload = function() {
+      setTimeout(function() {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+      }, 3000); // 3 seconds loading duration
+    };
+  </script>
 </head>
 <body>
-    <div id="loader">
-        <span class="loading"></span>
+  <!-- Loading Animation -->
+  <div id="loading" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <span class="loading"></span>
+  </div>
+
+  <!-- Main content that will show after loading -->
+  <div id="content">
+    <div style="width: 360px; height: 800px; position: relative; background: #303030">
+      <!-- Logo -->
+      <a href="https://isaacosho.github.io/Business-Card/">
+        <img style="width: 76px; height: 34px; left: 21px; top: 13px; position: absolute" src="https://caasiohso.sirv.com/IO%20LOGOArtboard%201%20w.png" />
+      </a>
+
+      <!-- Background sections -->
+      <div style="width: 360px; height: 473px; left: 0px; top: 164px; position: absolute; background: #2B2B2B; border-radius: 50px"></div>
+      <div style="width: 360px; height: 473px; left: 0px; top: 296px; position: absolute; background: #1A1A1A; border-radius: 50px"></div>
+      <div style="width: 360px; height: 473px; left: 0px; top: 416px; position: absolute; background: #111111; border-radius: 50px"></div>
+
+      <!-- Second icon (gallery icon that doesn't go anywhere) -->
+      <img style="width: 50px; height: 50px; left: 155px; top: 212px; position: absolute" src="https://caasiohso.sirv.com/picture_16607066.png" />
+
+      <!-- Third icon (to "https://isaacosho.github.io/30X15M/") -->
+      <a href="https://isaacosho.github.io/30X15M/">
+        <img style="width: 53px; height: 62px; left: 155px; top: 330px; position: absolute" src="https://caasiohso.sirv.com/touch-controller_17007430.png" />
+      </a>
+
+      <!-- Last icon (opens a new page with iframe) -->
+      <a href="javascript:void(0);" onclick="openIframePage()">
+        <img style="width: 70px; height: 70px; left: 147px; top: 553px; position: absolute" src="https://caasiohso.sirv.com/virtual-tour.png" />
+      </a>
     </div>
+  </div>
 
-   
-        <div class="section section-1">
-            <a href="https://caasiohso.sirv.com/picture_16607066.png" target="_blank">
-                <img src="https://caasiohso.sirv.com/picture_16607066.png" alt="Image Icon">
-            </a>
-        </div>
-
-        <div class="section section-2">
-            <a href="https://isaacosho.github.io/30X15M/" target="_blank">
-                <img src="https://caasiohso.sirv.com/touch-controller_17007430.png" alt="Touch Icon">
-            </a>
-        </div>
-
-        <div class="section section-3">
-            <a href="tour.html" target="_blank">
-                <img src="https://caasiohso.sirv.com/virtual-tour.png" alt="360 Tour Icon">
-            </a>
-        </div>
-
-        <div class="section section-4"></div>
-    </div>
-
-    <script>
-        // Simulate loading delay
-        window.addEventListener("load", function() {
-            setTimeout(function() {
-                document.getElementById("loader").style.display = "none";
-                document.getElementById("main-content").style.display = "block";
-            }, 3000); // Adjust this duration as needed
-        });
-    </script>
+  <script>
+    function openIframePage() {
+      const newWindow = window.open('', '_blank');
+      newWindow.document.write(`
+        <html>
+        <head><title>360 View</title></head>
+        <body style="background-color: #111111; margin: 0;">
+          <iframe width="90%" height="500px" allowFullScreen="true" allow="accelerometer; magnetometer; gyroscope" style="display:block; margin:20px auto; border:0 none; max-width:880px;border-radius:8px; box-shadow: 0 1px 1px rgba(0,0,0,0.11),0 2px 2px rgba(0,0,0,0.11),0 4px 4px rgba(0,0,0,0.11),0 6px 8px rgba(0,0,0,0.11),0 8px 16px rgba(0,0,0,0.11);" src="https://panoraven.com/en/embed/tgQjpS5GaO"></iframe>
+        </body>
+        </html>
+      `);
+      newWindow.document.close();
+    }
+  </script>
 </body>
 </html>
