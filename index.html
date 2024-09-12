@@ -1,13 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Page with Loading Animation</title>
-  <meta charset="utf-8">
   <style>
-    /* From Uiverse.io by hoi-du */
-    body {
+    /* General styling for centering */
+    body, html {
       margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background-color: black;
+    }
+
+    /* Flexbox container to center content */
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+      position: relative;
     }
 
     .loading {
@@ -62,6 +80,74 @@
     #content {
       display: none;
     }
+
+    /* Styling for your main content */
+    .main-content {
+      width: 90%;
+      max-width: 400px;
+      height: 800px;
+      background: #303030;
+      position: relative;
+      border-radius: 20px;
+    }
+
+    /* Styling the icons and images within the main container */
+    .main-content img {
+      position: absolute;
+    }
+
+    /* Specific positioning for each image (logo and icons) */
+    .logo {
+      width: 76px;
+      height: 34px;
+      left: 21px;
+      top: 13px;
+    }
+
+    .gallery-icon {
+      width: 50px;
+      height: 50px;
+      left: calc(50% - 25px);
+      top: 212px;
+    }
+
+    .third-icon {
+      width: 53px;
+      height: 62px;
+      left: calc(50% - 26.5px);
+      top: 330px;
+    }
+
+    .last-icon {
+      width: 70px;
+      height: 70px;
+      left: calc(50% - 35px);
+      top: 553px;
+    }
+
+    /* Background sections inside the content box */
+    .section {
+      width: 100%;
+      height: 473px;
+      position: absolute;
+      border-radius: 50px;
+    }
+
+    .section1 {
+      top: 164px;
+      background: #2B2B2B;
+    }
+
+    .section2 {
+      top: 296px;
+      background: #1A1A1A;
+    }
+
+    .section3 {
+      top: 416px;
+      background: #111111;
+    }
+
   </style>
   <script>
     // Show loading animation, then content after 3 seconds
@@ -71,43 +157,7 @@
         document.getElementById('content').style.display = 'block';
       }, 3000); // 3 seconds loading duration
     };
-  </script>
-</head>
-<body>
-  <!-- Loading Animation -->
-  <div id="loading" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-    <span class="loading"></span>
-  </div>
 
-  <!-- Main content that will show after loading -->
-  <div id="content">
-    <div style="width: 360px; height: 800px; position: relative; background: #303030">
-      <!-- Logo -->
-      <a href="https://isaacosho.github.io/Business-Card/">
-        <img style="width: 76px; height: 34px; left: 21px; top: 13px; position: absolute" src="https://caasiohso.sirv.com/IO%20LOGOArtboard%201%20w.png" />
-      </a>
-
-      <!-- Background sections -->
-      <div style="width: 360px; height: 473px; left: 0px; top: 164px; position: absolute; background: #2B2B2B; border-radius: 50px"></div>
-      <div style="width: 360px; height: 473px; left: 0px; top: 296px; position: absolute; background: #1A1A1A; border-radius: 50px"></div>
-      <div style="width: 360px; height: 473px; left: 0px; top: 416px; position: absolute; background: #111111; border-radius: 50px"></div>
-
-      <!-- Second icon (gallery icon that doesn't go anywhere) -->
-      <img style="width: 50px; height: 50px; left: 155px; top: 212px; position: absolute" src="https://caasiohso.sirv.com/picture_16607066.png" />
-
-      <!-- Third icon (to "https://isaacosho.github.io/30X15M/") -->
-      <a href="https://isaacosho.github.io/30X15M/">
-        <img style="width: 53px; height: 62px; left: 155px; top: 330px; position: absolute" src="https://caasiohso.sirv.com/touch-controller_17007430.png" />
-      </a>
-
-      <!-- Last icon (opens a new page with iframe) -->
-      <a href="javascript:void(0);" onclick="openIframePage()">
-        <img style="width: 70px; height: 70px; left: 147px; top: 553px; position: absolute" src="https://caasiohso.sirv.com/virtual-tour.png" />
-      </a>
-    </div>
-  </div>
-
-  <script>
     function openIframePage() {
       const newWindow = window.open('', '_blank');
       newWindow.document.write(`
@@ -121,5 +171,39 @@
       newWindow.document.close();
     }
   </script>
+</head>
+<body>
+  <!-- Loading Animation -->
+  <div id="loading" class="container">
+    <span class="loading"></span>
+  </div>
+
+  <!-- Main content -->
+  <div id="content" class="container">
+    <div class="main-content">
+      <!-- Logo -->
+      <a href="https://isaacosho.github.io/Business-Card/">
+        <img class="logo" src="https://caasiohso.sirv.com/IO%20LOGOArtboard%201%20w.png" />
+      </a>
+
+      <!-- Background sections -->
+      <div class="section section1"></div>
+      <div class="section section2"></div>
+      <div class="section section3"></div>
+
+      <!-- Second icon (gallery icon that doesn't go anywhere) -->
+      <img class="gallery-icon" src="https://caasiohso.sirv.com/picture_16607066.png" />
+
+      <!-- Third icon (to "https://isaacosho.github.io/30X15M/") -->
+      <a href="https://isaacosho.github.io/30X15M/">
+        <img class="third-icon" src="https://caasiohso.sirv.com/touch-controller_17007430.png" />
+      </a>
+
+      <!-- Last icon (opens a new page with iframe) -->
+      <a href="javascript:void(0);" onclick="openIframePage()">
+        <img class="last-icon" src="https://caasiohso.sirv.com/virtual-tour.png" />
+      </a>
+    </div>
+  </div>
 </body>
 </html>
